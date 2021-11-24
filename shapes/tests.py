@@ -1,6 +1,6 @@
 import unittest
 
-from shapes import Circle
+from .shapes import Circle
 from math import pi
 
 
