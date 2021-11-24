@@ -1,3 +1,4 @@
+import argparse
 import os
 import sys
 import turtle
@@ -58,23 +59,50 @@ def main():
     #     # user
     #     canvas.draw(circle)
 
-    canvas = Canvas(1000, 700)
-    gquad = Quadrilateral(
-        200, 300, fill='#009a44', stroke='white', at=(-200, 0)
-    )
-    wquad = Quadrilateral(
-        200, 300, fill='white', stroke='#dddddd', at=(0, 0)
-    )
-    oquad = Quadrilateral(
-        200, 300, fill='#ff8200', stroke='white', at=(200, 0)
-    )
-    text = Text('IRELAND', at=(0, -250))
-    canvas.draw(gquad)
-    canvas.draw(wquad)
-    canvas.draw(oquad)
-    canvas.write(text, align='center', font=('Arial', 60, 'bold'))
+    # canvas = Canvas(1000, 700)
+    # gquad = Quadrilateral(
+    #     200, 300, fill='#009a44', stroke='white', at=(-200, 0)
+    # )
+    # wquad = Quadrilateral(
+    #     200, 300, fill='white', stroke='#dddddd', at=(0, 0)
+    # )
+    # oquad = Quadrilateral(
+    #     200, 300, fill='#ff8200', stroke='white', at=(200, 0)
+    # )
+    # text = Text('IRELAND', at=(0, -250))
+    # canvas.draw(gquad)
+    # canvas.draw(wquad)
+    # canvas.draw(oquad)
+    # canvas.write(text, align='center', font=('Arial', 60, 'bold'))
 
-    turtle.done()
+    # turtle.done()
+
+    parser = argparse.ArgumentParser(prog='shapes', description='draws shapes')
+    parser.add_argument('command', help='the command to issue')
+    parser.add_argument('-o', '--output', help='output file')
+
+    args = parser.parse_args()
+    print(args)
+    if args.command == 'draw':
+        canvas = Canvas(1000, 700)
+        gquad = Quadrilateral(
+            200, 300, fill='#009a44', stroke='white', at=(-200, 0)
+        )
+        wquad = Quadrilateral(
+            200, 300, fill='white', stroke='#dddddd', at=(0, 0)
+        )
+        oquad = Quadrilateral(
+            200, 300, fill='#ff8200', stroke='white', at=(200, 0)
+        )
+        text = Text('IRELAND', at=(0, -250))
+        canvas.draw(gquad)
+        canvas.draw(wquad)
+        canvas.draw(oquad)
+        canvas.write(text, align='center', font=('Arial', 60, 'bold'))
+
+        turtle.done()
+    elif args.command == 'eval':
+        print('Evaluating shape...')
 
     return os.EX_OK
 
