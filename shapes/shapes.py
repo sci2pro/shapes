@@ -5,6 +5,10 @@ import yaml
 
 class Circle:
     def __init__(self, radius, fill='red', stroke='black', at=(0, 0)):
+        try:
+            assert radius > 0
+        except AssertionError:
+            raise ValueError(f"invalid radius: {radius}")
         self._radius = radius  # private/protected
         self._fill = fill
         self._stroke = stroke
@@ -41,6 +45,10 @@ class Circle:
             }
         })
         return string
+
+    @property
+    def circumference(self):
+        return 2 * pi * self._radius
 
     @classmethod
     def from_yaml(cls, string):
